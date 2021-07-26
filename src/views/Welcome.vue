@@ -12,14 +12,24 @@
           CoinBase is a platform for trading your bitcoin and giftcard at the
           best rate, why not give us a trial.
         </div>
-        <vs-button
+        <!-- <vs-button
           transparent
           :active="btnActive == 1"
           @click="btnActive = 1"
           class="container-btn"
-        >
-          <img :src="getStarted" alt="" class="btn-get-started" />
-        </vs-button>
+        > -->
+        <div class="container-btn">
+          <img
+            type="button"
+            :src="hover ? getStarted : getStarted2"
+            alt=""
+            class="btn-get-started"
+            @mouseover="hover = true"
+            @mouseleave="hover = false"
+          />
+        </div>
+
+        <!-- </vs-button> -->
       </div>
     </div>
   </div>
@@ -29,7 +39,7 @@
 // @ is an alias to /src
 /* import HelloWorld from '@/components/HelloWorld.vue' */
 import getStarted from "@/assets/getStarted.png";
-
+import getStarted2 from "@/assets/getStarted2.png";
 
 export default {
   name: "Home",
@@ -37,6 +47,8 @@ export default {
   data: () => ({
     btnActive: 0,
     getStarted: getStarted,
+    getStarted2: getStarted2,
+    hover: false,
   }),
   components: {
     /* HelloWorld */
@@ -45,8 +57,7 @@ export default {
 </script>
 
 <style scoped>
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,200&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,200&display=swap");
 
 .background {
   position: absolute;
@@ -90,12 +101,15 @@ export default {
   line-height: 27px;
 
   color: #ffffff;
-  padding-top:25px;
-  padding-bottom:70px
+  padding-top: 25px;
+  padding-bottom: 70px;
 }
 .container-btn {
-  padding: 0;
-  margin: 0;
+  position: relative;
+  height: 290px;
+  width: 290px;
+  margin-top: 20px;
+  float: left;
 }
 .btn-get-started {
   width: 157px;
@@ -103,6 +117,7 @@ export default {
   border-radius: 100px;
   padding: 0;
   margin: 0;
-  
+
 }
+
 </style>
